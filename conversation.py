@@ -12,19 +12,19 @@ AI:
 
 while True:
     response = openai.Completion.create(
-      engine="text-davinci-001",
-      prompt=conversation,
-      temperature=0.8,
-      max_tokens=60,
-      top_p=1.0,
-      frequency_penalty=0.5,
-      presence_penalty=0.0,
-      stop=["Human:"]
+        engine="text-davinci-001",
+        prompt=conversation,
+        temperature=1.0,  # 0.8
+        max_tokens=500,
+        top_p=1.0,
+        frequency_penalty=0.0,  # 0.5
+        presence_penalty=0.0,
+        stop=["Human:"]
     )
-    
+
     print("AI: ", end='')
     res = response.choices[0].text
-    print(res)    
-    conversation+=res
-    conversation+="\nHuman: {}".format(input("Human: "))
-    conversation+="\nAi: "
+    print(res)
+    conversation += res
+    conversation += "\nHuman: {}".format(input("Human: "))
+    conversation += "\nAi: "
